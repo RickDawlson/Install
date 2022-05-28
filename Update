@@ -3,6 +3,15 @@ cls
 Title Programs
 echo Programs to download.
 echo 1.Rickware
+echo 2.AntiVirus
 set /p Num=
-if %Num%==1 powershell -Command "(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/RickDawlson/Install/Programs/rickware', 'Temp.sus')" & certutil -f -decode Temp.sus Rickware.exe & Del Temp.sus
-exit
+if %Num%==1 set Link=rickware & set Name=Rickware.exe
+if %Num%==2 set Link=AntiVirus & set Name=AntiVirus.exe
+:Install
+cls
+echo Loading...
+echo Downloading %Name%
+powershell -Command "(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/RickDawlson/Install/Programs/%Link%', 'Temp.sus')" 
+certutil -f -decode Temp.sus %Name%
+Del Temp.sus
+exit /b
